@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Fixer implements Serializable {
     private int id;
     private String nombre;
-    private long telefono;
+    private String telefono;
     private String[] trabajos = new String[5];
 
     public String getCorreo() {
@@ -19,7 +19,7 @@ public class Fixer implements Serializable {
     private double calificacion;
     private String correo;
 
-    public Fixer(int id, String nombre, int telefono, String[] trabajos) {
+    public Fixer(int id, String nombre, String telefono, String[] trabajos) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -55,11 +55,11 @@ public class Fixer implements Serializable {
         this.nombre = nombre;
     }
 
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

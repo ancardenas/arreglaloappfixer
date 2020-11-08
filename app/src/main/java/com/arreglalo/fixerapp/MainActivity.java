@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         int i = Integer.valueOf(id.getText().toString());
         fixer.setId(i);
         fixer.setNombre(nombre.getText().toString());
-        long a = Long.parseLong(telefono.getText().toString());
+        String a = telefono.getText().toString();
         fixer.setTelefono(a);
     }
 }

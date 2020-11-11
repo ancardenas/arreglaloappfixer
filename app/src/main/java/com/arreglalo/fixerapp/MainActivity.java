@@ -2,6 +2,7 @@ package com.arreglalo.fixerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -26,5 +27,7 @@ public class MainActivity extends AppCompatActivity {
         fixer.setNombre(nombre.getText().toString());
         String a = telefono.getText().toString();
         fixer.setTelefono(a);
+        Intent intent = new Intent(this,MainActivity2.class);
+        startActivity(intent);
     }
 }

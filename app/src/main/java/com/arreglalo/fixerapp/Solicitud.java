@@ -30,6 +30,9 @@ public class Solicitud implements Serializable {
         this.service = service;
         this.cliente = cliente;
     }
+    public Solicitud(){
+
+    }
 
     public Cliente getCliente() {
         return cliente;

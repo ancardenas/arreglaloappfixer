@@ -11,12 +11,12 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> implements View.OnClickListener{
     private List<Solicitud> solicitudList;
     private RecyclerView recyclerView;
     private Context context;
     private  LayoutInflater inflater;
-
+    private View.OnClickListener listener;
     public ListAdapter(List<Solicitud> solicituds, Context context){
         this.inflater = LayoutInflater.from(context);
         this.context =context;
@@ -30,6 +30,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
     View view = inflater.inflate(R.layout.solictud_list,null);
+
+    view.setOnClickListener(this);
+
     return new ListAdapter.ViewHolder(view);
     }
 
@@ -44,6 +47,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void setItems(List<Solicitud> items){
         this.solicitudList= items;
     }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+            if(listener !=null){
+                listener.onClick(v);
+            }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tipo,detalles;
         public ViewHolder(View view){

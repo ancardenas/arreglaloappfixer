@@ -6,7 +6,11 @@ public class Fixer implements Serializable {
     private int id;
     private String nombre;
     private String telefono;
-    private String[] trabajos = new String[5];
+    private String correo;
+    private double calificacion;
+    private String ciudad;
+    private String contrasena;
+
 
     public String getCorreo() {
         return correo;
@@ -16,14 +20,28 @@ public class Fixer implements Serializable {
         this.correo = correo;
     }
 
-    private double calificacion;
-    private String correo;
 
-    public Fixer(int id, String nombre, String telefono, String[] trabajos) {
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public Fixer(int id, String nombre, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.trabajos = trabajos;
+
 
     }
     public Fixer(){
@@ -63,13 +81,7 @@ public class Fixer implements Serializable {
         this.telefono = telefono;
     }
 
-    public String[] getTrabajos() {
-        return trabajos;
-    }
 
-    public void setTrabajos(String[] trabajos) {
-        this.trabajos = trabajos;
-    }
 
     public double getCalificacion() {
         return calificacion;

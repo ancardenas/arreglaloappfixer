@@ -78,6 +78,7 @@ public class MainActivity2 extends AppCompatActivity implements Response.Listene
         recyclerView.setAdapter(adapter);
     }
     public void clokc(View view) {
+
         cargarWebService();
         cargarLista();
 
@@ -101,9 +102,10 @@ public class MainActivity2 extends AppCompatActivity implements Response.Listene
     public void onResponse(JSONObject response) {
 
         JSONArray jsonArray = response.optJSONArray("solicitud");
-
+        solicituds = new ArrayList<>();
         try {
             for (int i = 0; i < jsonArray.length(); i++) {
+
                 JSONObject jsonObject = null;
                 Solicitud solicitud = new Solicitud();
                 jsonObject = jsonArray.getJSONObject(i);

@@ -10,11 +10,11 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginStart="156dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginStart="280dp"
         android:onClick="clokc"
-        android:text="Button"
+        android:text="Actualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

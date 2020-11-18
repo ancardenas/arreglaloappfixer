@@ -75,7 +75,7 @@ public class MainActivity2 extends AppCompatActivity implements Response.Listene
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), solicituds.get(recyclerView.getChildAdapterPosition(v)).getService(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), solicituds.get(recyclerView.getChildAdapterPosition(v)).getService(), Toast.LENGTH_SHORT).show();
             solicitud = solicituds.get(recyclerView.getChildAdapterPosition(v));
             Intent intent=new Intent(getApplicationContext(),aceptService.class);
             intent.putExtra("fixer",(Serializable) fixer);

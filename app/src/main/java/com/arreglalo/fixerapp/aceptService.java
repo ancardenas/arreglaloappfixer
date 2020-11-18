@@ -69,7 +69,7 @@ public class aceptService extends AppCompatActivity implements Response.Listener
     }
     private void cargarWebService() {
         dialog = new ProgressDialog(this);
-        dialog.setMessage("CARGAAAA");
+        dialog.setMessage("Cargando");
         dialog.show();
         String url = "https://arreglalo.co/actualizarAcepted.php?id="+solicitud.getId()+
                 "&idF="+fixer.getId()+

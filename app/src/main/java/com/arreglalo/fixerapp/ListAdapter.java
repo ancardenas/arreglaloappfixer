@@ -82,7 +82,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
             }else{
                 icono.setImageResource(R.mipmap.sendstateicon);
             }
-            fecha.setText(item.getDia()+" "+item.getMes()+" "+item.getHora()+" "+item.getMinuto());
+            fecha.setText(item.getDia()+"/"+item.getMes()+" "+item.getHora()+":"+item.getMinuto());
 
 
         }

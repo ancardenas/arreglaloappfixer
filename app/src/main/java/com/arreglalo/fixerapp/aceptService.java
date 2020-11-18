@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class aceptService extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     private Solicitud solicitud;
     private Fixer fixer;
-    private TextView accSer;
+    private TextView accSer,detalles,hora,fecha;
     private Button acept;
     private Spinner spinner;
 
@@ -40,7 +40,14 @@ public class aceptService extends AppCompatActivity implements Response.Listener
         fixer = (Fixer) getIntent().getSerializableExtra("fixer");
         acept = findViewById(R.id.bt_acept);
         accSer = findViewById(R.id.txtacSer);
+        detalles = findViewById(R.id.txt_acepDet);
+        hora = findViewById(R.id.txt_acepHour);
+        fecha = findViewById(R.id.txt_acepDate);
+
         accSer.setText(solicitud.getService());
+        detalles.setText(solicitud.getDetails());
+        hora.setText(solicitud.getHora()+":"+solicitud.getMinuto());
+        fecha.setText(solicitud.getDia()+"/"+solicitud.getMes());
         spinner = findViewById(R.id.spinner);
         queue = Volley.newRequestQueue(this);
         String [] opciones =  {"1","2","3","4","5"};

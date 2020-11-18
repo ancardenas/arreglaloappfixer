@@ -53,7 +53,16 @@ public class aceptedServices extends AppCompatActivity implements Response.Liste
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), solicituds.get(recyclerView.getChildAdapterPosition(v)).getService(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), solicituds.get(recyclerView.getChildAdapterPosition(v)).getService(), Toast.LENGTH_SHORT).show();
+            if(solicituds.get(recyclerView.getChildAdapterPosition(v)).isComplete()){
+                Solicitud solicitud = solicituds.get(recyclerView.getChildAdapterPosition(v));
+                Intent intent =  new Intent(this,completeInfo.class);
+                intent.putExtra("solicitud",solicitud);
+                startActivity(intent);
+            }else {
+                Toast.makeText(this,"El cliente esta revisando su cotización",Toast.LENGTH_SHORT).show();
+            }
+
 
         });
         recyclerView.setAdapter(adapter);
@@ -121,11 +130,12 @@ public class aceptedServices extends AppCompatActivity implements Response.Liste
                     solicitud.setDia(Integer.parseInt(fecha.substring(8,10)));
                     solicitud.setHora(Integer.parseInt(fecha.substring(11,13)));
                     solicitud.setMinuto(Integer.parseInt(fecha.substring(14,16)));
+                    solicitud.setIdU(Integer.parseInt(jsonObject1.optString("Id_U1")));
                     if(id_s.contains(solicitud.getId())){
                         solicituds.add(solicitud);
-                        Toast.makeText(this,"Se añadio",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this,"Se añadio",Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(this,solicitud.getService()+i,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this,solicitud.getService()+i,Toast.LENGTH_SHORT).show();
                 }
                 dialog.hide();
             } catch (JSONException e) {

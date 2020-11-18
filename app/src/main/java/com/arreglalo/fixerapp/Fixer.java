@@ -10,7 +10,33 @@ public class Fixer implements Serializable {
     private double calificacion;
     private String ciudad;
     private String contrasena;
+    private String genero;
+    private String fecha;
+    private String direccion;
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     public String getCorreo() {
         return correo;

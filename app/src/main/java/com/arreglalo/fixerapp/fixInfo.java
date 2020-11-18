@@ -3,10 +3,11 @@ package com.arreglalo.fixerapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,10 +21,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
-
-public class MainActivity extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
-    private EditText ciudad,telefono,correo,nombre,contrasena;
+public class fixInfo extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener{
+    EditText nombre,apellido,fechanac,direccion;
+    RadioButton hombre,mujer;
+    CheckBox tyc,tdp;
 
     private Fixer fixer;
     private ProgressDialog dialog;
@@ -31,52 +32,47 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     private JsonObjectRequest jsonObjectRequest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        fixer = new Fixer();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fix_info);
+        nombre = findViewById(R.id.ed_nombrereg);
+        apellido = findViewById(R.id.ed_apellidosreg);
+        fechanac = findViewById(R.id.ed_fechanacreg);
+        direccion = findViewById(R.id.ed_direccionreg);
+        hombre = findViewById(R.id.rb_hombre);
+        mujer =findViewById(R.id.rb_mujer);
+        tyc = findViewById(R.id.ck_tyc);
+        tdp = findViewById(R.id.ck_tdp);
         dialog = new ProgressDialog(this);
         dialog.setMessage("Cargando");
-        dialog.show();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ciudad = findViewById(R.id.ed_ciuad);
-        telefono=findViewById(R.id.ed_telefono);
-        correo = findViewById(R.id.ed_correo);
-        nombre=findViewById(R.id.ed_nombre);
-        contrasena = findViewById(R.id.ed_contrasena);
+        fixer = (Fixer) getIntent().getSerializableExtra("fixer");
 
 
         queue = Volley.newRequestQueue(this);
         String url1 = "https://arreglalo.co/recibirFix.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url1,null,this,this);
         queue.add(jsonObjectRequest);
+        dialog.show();
     }
-    public void clock(View view) {
-
-        fixer.setNombre(nombre.getText().toString());
-        String a = telefono.getText().toString();
-        fixer.setTelefono(a);
-        fixer.setCalificacion(5);
-        fixer.setCiudad(ciudad.getText().toString());
-        fixer.setCorreo(correo.getText().toString());
-        fixer.setContrasena(contrasena.getText().toString());
+    public void click(View view){
+        fixer.setNombre(nombre.getText().toString()+" "+apellido.getText().toString());
+        fixer.setFecha(fechanac.getText().toString());
+        fixer.setDireccion(direccion.getText().toString());
+        if (hombre.isChecked()){
+            fixer.setGenero("Hombre");
+        }else if(mujer.isChecked()) {
+            fixer.setGenero("Mujer");
+        }else{
+            fixer.setGenero("No registra");
+        }
         cargarWebService();
 
-        Intent intent = new Intent(this,MainActivity2.class);
-        intent.putExtra("fixer",(Serializable)fixer );
-        startActivity(intent);
     }
-    //https://arreglalo.000webhostapp.com/insertFixer.php?id=2&ciudad=bogota&calificacion=5&numero=3322&correo=yoyo&nombre=ud&contrasena=yo
-    public void initSesion(View view){
-        Intent intent = new Intent(this,initSesion.class);
-        startActivity(intent);
-    }
-
-
 
     private void cargarWebService() {
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Cargando");
+
         dialog.show();
-        String url = "https://arreglalo.co/insertFixer.php?id="+fixer.getId()+
+        String url = "https://arreglalo.co/insertFixer.php?" +
+                "id="+fixer.getId()+
                 "&ciudad="+fixer.getCiudad() +
                 "&calificacion="+fixer.getCalificacion() +
                 "&numero="+fixer.getTelefono() +
@@ -85,8 +81,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 "&contrasena="+fixer.getContrasena()+
                 "&genero="+fixer.getGenero()+
                 "&fecha="+fixer.getFecha()+
-                "&direccion="+fixer.getDireccion()
-                ;
+                "&direccion="+fixer.getDireccion();
         String url1 = "https://arreglalo.co/recibirFix.php";
 
         url=url.replace(" ","%20");

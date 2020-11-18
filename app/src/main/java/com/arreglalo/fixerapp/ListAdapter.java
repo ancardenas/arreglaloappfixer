@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -59,17 +60,31 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView tipo,detalles;
+        TextView tipo,detalles,fecha;
+        ImageView icono;
         public ViewHolder(View view){
             super(view);
             tipo = view.findViewById(R.id.txt_tipo);
             detalles = view.findViewById(R.id.txt_detalles);
+            icono = view.findViewById(R.id.icono);
+            fecha = view.findViewById(R.id.txt_fecha);
 
 
         }
         void bindData(final Solicitud item){
             tipo.setText(item.getService());
             detalles.setText(item.getDetails());
+            if (item.isComplete()){
+                icono.setImageResource(R.mipmap.completedstateicon);
+
+            }else if(item.isAcepted()){
+                icono.setImageResource(R.mipmap.aceptedstateicon);
+            }else{
+                icono.setImageResource(R.mipmap.sendstateicon);
+            }
+            fecha.setText(item.getDia()+" "+item.getMes()+" "+item.getHora()+" "+item.getMinuto());
+
+
         }
     }
 

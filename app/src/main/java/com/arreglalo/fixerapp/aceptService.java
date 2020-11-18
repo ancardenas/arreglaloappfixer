@@ -58,12 +58,13 @@ public class aceptService extends AppCompatActivity implements Response.Listener
         Toast.makeText(this,seleccion,Toast.LENGTH_SHORT).show();
 
         cargarWebService();
+
     }
     private void cargarWebService() {
         dialog = new ProgressDialog(this);
         dialog.setMessage("CARGAAAA");
         dialog.show();
-        String url = "https://arreglalo.000webhostapp.com/actualizarAcepted.php?id="+solicitud.getId()+
+        String url = "https://arreglalo.co/actualizarAcepted.php?id="+solicitud.getId()+
                 "&idF="+fixer.getId()+
                 "&duracion="+solicitud.getDuracion()+
                 "&precio="+solicitud.getDuracion();
@@ -73,19 +74,21 @@ public class aceptService extends AppCompatActivity implements Response.Listener
 
         queue.add(jsonObjectRequest);
 
+
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
         dialog.hide();
         Toast.makeText(this,"MAMA NO LO LOGRE",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     public void onResponse(JSONObject response) {
         Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
         dialog.hide();
-
+        finish();
 
     }
 }

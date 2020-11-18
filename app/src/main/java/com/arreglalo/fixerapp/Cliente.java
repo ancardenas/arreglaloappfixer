@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Cliente implements Serializable {
     private  String nombre;
-    private  long numero;
+    private  String numero;
     private  double calificacion;
     private  String direccion;
     private  String correo;
@@ -13,7 +13,7 @@ public class Cliente implements Serializable {
     private  String contrasena;
 
 
-    public Cliente(String nombre, long numero, String direccion, String correo, String ciudad, String detalles) {
+    public Cliente(String nombre, String numero, String direccion, String correo, String ciudad, String detalles) {
         this.nombre = nombre;
         this.numero = numero;
         this.direccion = direccion;
@@ -49,11 +49,11 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
     }
 
-    public long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

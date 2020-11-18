@@ -8,7 +8,8 @@
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
      android:layout_height="wrap_content"
-     android:layout_width="match_parent">
+     android:layout_width="match_parent"
+    android:backgroundTint="@color/arre_darkGreen">
 
 
     <LinearLayout
@@ -18,35 +19,67 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="339dp"
             android:layout_height="match_parent">
 
 
-            <TextView
-                android:id="@+id/txt_tipo"
-                android:layout_width="162dp"
-                android:layout_height="60dp"
-                android:text="TextView"
-                android:textSize="24sp"
+            <ImageView
+                android:id="@+id/icono"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_dialog_info" />
 
             <TextView
                 android:id="@+id/txt_detalles"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="36dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:text="TextView"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.508"
-                app:layout_constraintStart_toEndOf="@+id/txt_tipo"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/icono" />
+
+            <TextView
+                android:id="@+id/txt_tipo"
+                android:layout_width="162dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_detalles"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toEndOf="@+id/icono"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/txt_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="124dp"
+                android:layout_marginRight="124dp"
+                android:layout_marginTop="17dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_detalles"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

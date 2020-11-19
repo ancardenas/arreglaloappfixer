@@ -93,7 +93,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="28dp"
-        android:text="Acepto términos y Condiciones y Politícas de Privacidad(Habeas Data)"
+        android:text="Acepto términos y Condiciones y Políticas de Privacidad(Habeas Data)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_direccionreg" />
 
@@ -101,7 +101,7 @@
         android:id="@+id/ck_tdp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Acepto Expresamente la autorización de tratamiento de datos personales y Politíca de privacidad"
+        android:text="Acepto Expresamente la autorización de tratamiento de datos personales y Política de privacidad"
         app:layout_constraintStart_toStartOf="@+id/ck_tyc"
         app:layout_constraintTop_toBottomOf="@+id/ck_tyc" />
 

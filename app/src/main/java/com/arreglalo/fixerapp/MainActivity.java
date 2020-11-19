@@ -101,13 +101,13 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     public void onErrorResponse(VolleyError error) {
         dialog.hide();
-        Toast.makeText(this,"MAMA NO LO LOGRE",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Error al conectar,intente de nuevo",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponse(JSONObject response) {
         String url1 = "https://arreglalo.co/recibirFix.php";
-        Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
         dialog.hide();
         if(response.optJSONArray("usuario")!=null) {
             JSONArray jsonArray = response.optJSONArray("usuario");
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
             try {
                 jsonObject = jsonArray.getJSONObject(0);
                 fixer.setId((jsonObject.optInt("Id_F") + 1));
-                Toast.makeText(getApplicationContext(), fixer.getId() + " ", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), fixer.getId() + " ", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

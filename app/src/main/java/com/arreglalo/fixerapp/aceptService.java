@@ -62,7 +62,7 @@ public class aceptService extends AppCompatActivity implements Response.Listener
 
         String seleccion = spinner.getSelectedItem().toString();
          solicitud.setDuracion(Integer.parseInt(seleccion));
-        Toast.makeText(this,seleccion,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,seleccion,Toast.LENGTH_SHORT).show();
 
         cargarWebService();
 
@@ -87,13 +87,13 @@ public class aceptService extends AppCompatActivity implements Response.Listener
     @Override
     public void onErrorResponse(VolleyError error) {
         dialog.hide();
-        Toast.makeText(this,"MAMA NO LO LOGRE",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Error al Conectar, intente de nuevo",Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
         dialog.hide();
         finish();
 

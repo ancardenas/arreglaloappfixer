@@ -3,6 +3,7 @@ package com.arreglalo.fixerapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -96,13 +97,13 @@ public class fixInfo extends AppCompatActivity implements Response.Listener<JSON
     @Override
     public void onErrorResponse(VolleyError error) {
         dialog.hide();
-        Toast.makeText(this,"MAMA NO LO LOGRE",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Error al conectar, intente de nuevo",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponse(JSONObject response) {
         String url1 = "https://arreglalo.co/recibirFix.php";
-        Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"MAMA LO LOGRE",Toast.LENGTH_SHORT).show();
         dialog.hide();
         if(response.optJSONArray("usuario")!=null) {
             JSONArray jsonArray = response.optJSONArray("usuario");
@@ -114,7 +115,14 @@ public class fixInfo extends AppCompatActivity implements Response.Listener<JSON
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else{}
+
+
+        }else{
+
+            Intent intent = new Intent(this,MainActivity2.class);
+            intent.putExtra("fixer",fixer);
+            startActivity(intent);
+        }
 
     }
 }
